@@ -202,7 +202,7 @@ app.post('/forgot', function(req, res, next) {
         service: 'Gmail',
         auth: {
            user: 'shashidhar.hr@gmail.com',
-          pass: 'Balbasaur1437'
+          pass: 'passs'
         }
       });
       var mailOptions = {
@@ -266,7 +266,7 @@ app.post('/reset/:token', function(req, res) {
         service: 'Gmail',
         auth: {
           user: 'shashidhar.hr@gmail.com',
-          pass: 'Balbasaur1437'
+          pass: 'passs'
         }
       });
       var mailOptions = {
