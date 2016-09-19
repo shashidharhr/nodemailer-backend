@@ -13,6 +13,10 @@ var bcrypt = require('bcrypt-nodejs');
 var async = require('async');
 var crypto = require('crypto');
 var flash = require('express-flash');
+var apiRoutes = express.Router(); 
+
+var app = express();
+
 
 
 
@@ -86,9 +90,6 @@ var User = mongoose.model('User', userSchema);
 
 mongoose.connect('mongodb://localhost/test');
 
-var app = express();
-
-
 
 
 // Middleware
@@ -110,11 +111,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Routes
-app.get('/', function(req, res) {
-  res.render('index', {
-    title: 'Express',
-    user: req.user
-  });
+apiRoutes.get('/', function(req, res) {
+  // res.render('index', {
+  //   title: 'Express',
+  //   user: req.user
+  // });
+     res.json({ success: true, message: 'This is the root page' });
+          
 });
 
 
@@ -293,7 +296,7 @@ app.post('/reset/:token', function(req, res) {
 
 
 
-
+app.use('/api', apiRoutes);
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
